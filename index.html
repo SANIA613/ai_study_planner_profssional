@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Study Planner — Professional</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>AI Study Planner</h1>
+    <p class="subtitle">Enter your subjects & exam date — get a smart, printable study timetable.</p>
+  </header>
+
+  <main class="container">
+    <section class="card input-card">
+      <h2>1. Enter your details</h2>
+      <label>Subjects & topics (one per line)<span class="muted"> — format: <code>Subject: topic1|topic2|topic3</code> or just <code>Subject</code></span></label>
+      <textarea id="subjectsInput" placeholder="Math: Algebra|Calculus
+Physics: Mechanics|Thermodynamics
+English: Grammar|Comprehension"></textarea>
+
+      <div class="row">
+        <div class="col">
+          <label>Exam Date</label>
+          <input id="examDate" type="date">
+        </div>
+        <div class="col">
+          <label>Hours available per day</label>
+          <input id="hoursPerDay" type="number" min="1" max="12" value="4">
+        </div>
+        <div class="col">
+          <label>Difficulty (global)</label>
+          <select id="difficulty">
+            <option value="1">Easy</option>
+            <option value="1.25" selected>Medium</option>
+            <option value="1.5">Hard</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="generateBtn" class="primary">Generate Plan</button>
+        <button id="clearBtn" class="ghost">Clear</button>
+        <button id="printBtn" class="outline">Print</button>
+      </div>
+      <p class="hint">Tip: include approximate topics to get a more detailed timetable.</p>
+    </section>
+
+    <section class="card output-card" id="outputCard" hidden>
+      <h2>Your Study Plan</h2>
+      <div id="summary"></div>
+      <div id="timetable"></div>
+
+      <details class="notes">
+        <summary>How this planner works</summary>
+        <ol>
+          <li>Calculates days left (excluding exam day).</li>
+          <li>Distributes available study hours across subjects, weighted by difficulty and number of topics.</li>
+          <li>Reserves last 3 days for revision and mock tests.</li>
+          <li>Generates daily time slots with short breaks.</li>
+        </ol>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Made with ♥ • Simple professional UI • Export & Print ready</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
